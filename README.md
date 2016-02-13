@@ -45,7 +45,7 @@ it will become this object:
 
 ## pages
 
-Any .things or .components in the pages folder that have a `data.json` block with a `"component"` defined will become website pages. 
+Any .components in the pages folder will become website pages. Any .things in the pages folder that have a `data.json` block with a `"component"` defined will also become website pages. 
 
 If you have a `pages/colors.thing` that looks like this:
 
