@@ -28,7 +28,7 @@ Let's say you're making a portfolio website. Here's what you might do:
 
 A basic `components/art.component` looks like this:
 
-```
+```html
 <html>
   <head>
     <title>{{page.title}}</title>
@@ -42,7 +42,7 @@ A basic `components/art.component` looks like this:
 
 A basic `website/index.component` looks like this:
 
-```
+```html
 <html>
   <head>
     <title>All my arts</title>
@@ -106,7 +106,7 @@ html:
   <p>hi</p>
 ```
 
-```
+```html
 <p>hi</p>
 ```
 
@@ -118,7 +118,7 @@ xenakis looks in two places for components: the `components` folder, and `~/.xen
 
 So, if you have a component called `components/greeting.component` that looks like this:
 
-```
+```html
 <h1>Hello there!</h1>
 <p>What's your name?<p>
 ```
@@ -244,7 +244,7 @@ text.md:
 
 and a `components/colors.component` that looks like this:
 
-```
+```html
 <html>
   <head>
     <title>{{page.data.title}}</title>
