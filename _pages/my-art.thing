@@ -5,7 +5,7 @@ data.json:
   "year": "2016",
   "media": [
     {
-      "component": "image",
+      "type": "image",
       "src": "https://www.wonderplugin.com/wp-content/plugins/wonderplugin-lightbox/images/demo-image0.jpg"
     }
   ]
