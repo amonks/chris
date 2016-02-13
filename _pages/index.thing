@@ -1,4 +1,4 @@
-data:
+data.json:
 {
   "component": "art",
   "title": "My Art",
@@ -11,6 +11,6 @@ data:
   ]
 }
 
-text:
+text.md:
 This is a cool art that I made. It is about *the real*.
 
