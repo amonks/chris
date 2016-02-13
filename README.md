@@ -4,6 +4,19 @@ this is an example project using a forthcoming static site generator.
 
 xenakis is a static site generator that aims to be as simple as possible, so it's flexible/generic enough for pros but also understandable enough for n00bs.
 
+> simple not easy. 
+> 
+> go is hard but simple: you can learn the rules in two sentences.
+> Chess is hard but complex: you need some time to learn the rules
+
+Here are my goals:
+
+I want the power of structure/control flow/templating but I want it to feel like vanilla html. I want it to feel like a language (html), not like a framework. This is to html what scss is to css, *not* what jekyll is to html. 
+
+- You don't need a special generator to create the right file structure: if you take an existing html website and stick it in a folder called "pages" that is a totally valid xenakis project.
+
+- The components look like regular html files. You call them with regular html tags and pass data using regular html attrs.
+
 # example
 
 Let's say you're making a portfolio website. Here's what you might do:
@@ -71,6 +84,12 @@ The resultant website will have the following directory structure:
 This very repository includes a more fleshed-out iteration of this example.
 
 # documentation
+
+### building your website
+
+run `xenakis build` in this folder to build the website. You'll get a new folder, `build`, that you can ftp over to your web host.
+
+run `xenakis gh-pages` in this folder to build the website (you'll get a 'build' folder) and then copy it into a branch called `gh-pages`.
 
 ### components
 
