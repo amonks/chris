@@ -93,6 +93,16 @@ So, if you have a component called `components/greeting.component` that looks li
 
 you could use `<greeting />` in a page or another component to insert that html.
 
+Components can also include css and javascript. If your component needs css or javascript, make blocks: A component without blocks is the same as a component with one `html:` block.
+
+```
+css: 
+  html { color: green; }
+
+html:
+  <p>{{attrs.text</p>
+```
+
 ### available globals
 
 - `page` is the current page, if it's a .thing rather than a .component
