@@ -2,9 +2,9 @@ this is an example project using a forthcoming static site generator.
 
 * * * 
 
-define components in the `_components` folder.
+define components in the `components` folder.
 
-Make pages in the `_pages` folder.
+Make pages in the `pages` folder.
 
 ## things
 
@@ -41,9 +41,9 @@ it will become this object:
 
 ## pages
 
-Any .things or .components in the _pages folder that have a `data.json` block with a `"component"` defined will become website pages. 
+Any .things or .components in the pages folder that have a `data.json` block with a `"component"` defined will become website pages. 
 
-If you have a `_pages/colors.thing` that looks like this:
+If you have a `pages/colors.thing` that looks like this:
 
 ```
 data.json:
@@ -61,7 +61,7 @@ text.md:
 - blue
 ```
 
-and a `_components/colors.component` that looks like this:
+and a `components/colors.component` that looks like this:
 
 ```
 <html>
@@ -74,7 +74,7 @@ and a `_components/colors.component` that looks like this:
 </html>
 ```
 
-the built page will end up in `_build/colors/index.html`.
+the built page will end up in `build/colors/index.html`.
 
 ## components
 
@@ -82,33 +82,36 @@ Components are html. One key difference: any tag that is a component **or** a *s
 
 ### available globals
 
-- `pages` is an array of all the pages.
-- `page` is this page.
-- `attrs` is a map of the component's attrs
-- `children` is the component's children as html
-- `site` is `/site.thing`
+- `page` is the current page, if it's a .thing rather than a .component
+- `attrs` is a map of the open component's attrs
+- `children` is the open component's children as html
+
+any `.thing` in this directory tree becomes a global too. For example, `pages/my-art.thing` will be available as `pages.my-art`, and `site.thing` will be available as `site`.
 
 ## special components:
 
+use map for 
 ```
-<map collection where (condition) as reference>
-  {{reference}}
-</map>
+<ul>
+  <map collection where (condition) as reference>
+    <li>{{reference}}</li>
+  </map>
+</ul>
 ```
 
 ```
 <switch thing>
-  option:
-    something
-  option:
-    something else
+  "one":
+    <p>This will render if `thing === "one"`.</p>
+  "another":
+    <p>This will render if `thing === "another"`.</p>
 </switch>
 ```
 
 ```
 <if condition>
-  something
+  <p>This will render if condition is true</p>
 <else>
-  something else
+  <p>This will render if condition is false</p>
 </if>
 ```
