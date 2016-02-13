@@ -8,7 +8,11 @@ Make pages in the `pages` folder.
 
 ## things
 
-things are files that end in `.thing`. They can have any number of blocks. Blocks can (currently) be either json or markdown.
+things are files that end in `.thing`.
+
+Things are made of blocks. A block starts with `name.type:` and continues until the next block. Each block must have a unique name.
+
+Things can have any number of blocks. Every block needs a name and a type annotation. The allowed types are json (.json), markdown (.md or .markdown) or text (.txt).
 
 things become objects. If you have this thing:
 
@@ -21,7 +25,7 @@ properties.json:
   "truthiness": 9.5
 }
 
-text.md:
+description.md:
 # roundness
 
 This is a **fact** about the earth's shape.
@@ -35,7 +39,7 @@ it will become this object:
   "properties": {
     "truthiness": 9.5
   },
-  "text": "<h1>roundness</h1><p>This is a <strong>fact</strong> about the earth's shape.</p>"
+  "description": "<h1>roundness</h1><p>This is a <strong>fact</strong> about the earth's shape.</p>"
 }
 ```
 
@@ -80,6 +84,15 @@ the built page will end up in `build/colors/index.html`.
 
 Components are html. One key difference: any tag that is a component **or** a *special component* renders that component instead of just the html tag. Also, anything {{double-wrapped}} is evaluated as javascript and should return a value.
 
+So, if you have a component called `components/greeting.component` that looks like this:
+
+```
+<h1>Hello there!</h1>
+<p>What's your name?<p>
+```
+
+you could use `<greeting />` in a page or another component to insert that html.
+
 ### available globals
 
 - `page` is the current page, if it's a .thing rather than a .component
@@ -90,7 +103,20 @@ any `.thing` in this directory tree becomes a global too. For example, `pages/my
 
 ## special components:
 
-use map for 
+Special components look kinda like regular components, but they can do control flow.
+
+### if
+
+```
+<if condition>
+  <p>This will render if condition is true</p>
+<else>
+  <p>This will render if condition is false</p>
+</if>
+```
+
+### map
+
 ```
 <ul>
   <map collection where (condition) as reference>
@@ -98,6 +124,8 @@ use map for
   </map>
 </ul>
 ```
+
+### switch
 
 ```
 <switch thing>
@@ -108,10 +136,3 @@ use map for
 </switch>
 ```
 
-```
-<if condition>
-  <p>This will render if condition is true</p>
-<else>
-  <p>This will render if condition is false</p>
-</if>
-```
