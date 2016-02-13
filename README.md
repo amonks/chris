@@ -4,6 +4,73 @@ this is an example project using a forthcoming static site generator.
 
 xenakis is a static site generator that aims to be as simple as possible, so it's flexible/generic enough for pros but also understandable enough for n00bs.
 
+# example
+
+Let's say you're making a portfolio website. Here's what you might do:
+
+1. make a `components` and a `pages` folder
+2. make a new component `components/art.component` with a template for a portfolio-item
+3. for each art in your portfolio, make a new thing called `pages/[art-title].thing`
+4. make a new thing called `pages/index.component` that renders a list of arts
+
+A basic `components/art.component` looks like this:
+
+```
+<html>
+  <head>
+    <title>{{page.title}}</title>
+  </head>
+  <body>
+    <h1>{{page.title}}</h1>
+    {{page.text}}
+  </body>
+</html>
+```
+
+A basic `pages/index.component` looks like this:
+
+```
+<html>
+  <head>
+    <title>All my arts</title>
+  </head>
+  <body>
+    <h1>These are all my arts:</h1>
+    <ul>
+      <map pages where (component === 'art') as an_art>
+        <li>
+          <a href={{an_art.url}}>
+            {{an_art.title}}
+          </a>
+        </li>
+      </map>
+    </ul>
+  </body>
+</html>
+```
+
+A basic `pages/my-art.thing` looks like this:
+
+```
+data.json:
+{
+  "component": "art",
+  "title": "My Art"
+  ]
+}
+
+text.md:
+One time I made a cool art about *the real*.
+```
+
+The resultant website will have the following directory structure:
+
+* `index.html`
+* `my-art/index.html`
+
+
+# documentation
+
 ## things
 
 things are files that end in `.thing`.
@@ -152,31 +219,3 @@ You can write your own, but three are built in:
 </switch>
 ```
 
-## example
-
-Let's say you're making a portfolio website. Here's what you might do:
-
-1. make a `components` and a `pages` folder
-2. make a new component `components/art.component` with a template for a portfolio-item
-3. for each art in your portfolio, make a new thing called `pages/[art-title].thing`
-4. make a new thing called `pages/index.component` with something like:
-
-```
-<html>
-  <head>
-    <title>All my arts</title>
-  </head>
-  <body>
-    <h1>These are all my arts:</h1>
-    <ul>
-      <map pages where (component === 'art') as an_art>
-        <li>
-          <a href={{an_art.url}}>
-            {{an_art.title}}
-          </a>
-        </li>
-      </map>
-    </ul>
-  </body>
-</html>
-```
