@@ -2,9 +2,7 @@ this is an example project using a forthcoming static site generator.
 
 * * * 
 
-define components in the `components` folder.
-
-Make pages in the `pages` folder.
+xenakis is a static site generator that aims to be as simple as possible, so it's flexible/generic enough for pros but also understandable enough for n00bs.
 
 ## things
 
