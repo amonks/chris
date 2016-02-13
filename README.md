@@ -13,7 +13,7 @@ Here are my goals:
 
 I want the power of structure/control flow/templating but I want it to feel like vanilla html. I want it to feel like a language (html), not like a framework. This is to html what scss is to css, *not* what jekyll is to html. 
 
-- You don't need a special generator to create the right file structure: if you take an existing html website and stick it in a folder called "pages" that is a totally valid xenakis project.
+- You don't need a special generator to create the right file structure: if you take an existing html website and stick it in a folder called "website", that is a totally valid xenakis project.
 
 - The components look like regular html files. You call them with regular html tags and pass data using regular html attrs.
 
@@ -21,10 +21,10 @@ I want the power of structure/control flow/templating but I want it to feel like
 
 Let's say you're making a portfolio website. Here's what you might do:
 
-1. make a `components` and a `pages` folder
+1. make a `components` and a `website` folder
 2. make a new component `components/art.component` with a template for a portfolio-item
-3. for each art in your portfolio, make a new component called `pages/[art-title].component`
-4. make a new component called `pages/index.component` that renders a list of arts
+3. for each art in your portfolio, make a new component called `website/[art-title].component`
+4. make a new component called `website/index.component` that renders a list of arts
 
 A basic `components/art.component` looks like this:
 
@@ -40,7 +40,7 @@ A basic `components/art.component` looks like this:
 </html>
 ```
 
-A basic `pages/index.component` looks like this:
+A basic `website/index.component` looks like this:
 
 ```
 <html>
@@ -62,7 +62,7 @@ A basic `pages/index.component` looks like this:
 </html>
 ```
 
-A basic `pages/my-art.component` looks like this:
+A basic `website/my-art.component` looks like this:
 
 ```
 data.json:
@@ -93,11 +93,11 @@ run `xenakis gh-pages` in this folder to build the website (you'll get a 'build'
 
 ### components
 
-Websites are made up of components. Components in your `pages` folder turn into pages on your website. Components in your `components` folder can be used like html tags from other components.
+Websites are made up of components. Components in your `website` folder turn into pages on your website. Any other stuff in your website folder is copied straight-over into your website, and gzipped if appropriate. Components in your `components` folder can be used like html tags from other components.
 
 Components are made of blocks. A block starts with `name.type:` or just `type:` and continues until the next block. Each block must have a unique name. If a block declaration lacks a name, that block's type becomes its name. `html:` and `html.html:` are equivalent.
 
-Things can have any number of blocks. Every block needs a name and a type annotation. The allowed types are html (.html), json (.json), markdown (.md), plain text (.txt), javascript (.js), and css (.css).
+Components can have any number of blocks. Every block needs a name and a type annotation. The allowed types are html (.html), json (.json), markdown (.md), plain text (.txt), javascript (.js), and css (.css).
 
 The default block is called `html`. A component without block declarations has one block: `html`. The following two components are equivalent:
 
@@ -211,18 +211,20 @@ Other components will have a global defined at `facts.the_earth` with this value
 
 Within {{double-brackets}} in html blocks, and within javascript blocks, several useful objects are global.
 
-- `page` is the root component (in the pages folder). It might be the current component or it might have called the current component.
+- `page` is the root component (in the website folder). It might be the current component or it might have called the current component.
 - `this` is the current component. It might be the same as `page`, or it might not.
 - `attrs` is a map of the attrs passed to the current component, if the current component was called from html with attrs.
 - `children` is the current component's children as html, if the current component was called from html and has child tags within it.
 
-Any `.component` in this directory tree becomes a global too. For example, `pages/my-art.component` will be available as `pages.my-art`, and `site.component` will be available as `site`.
+Any `.component` in this directory tree becomes a global too. For example, `website/my-art.component` will be available as `website.my-art`, and `site.component` will be available as `site`.
+
+- `pages` is an alias to `website`.
 
 ### pages
 
-Any .components in the pages folder will become website pages.
+Any .components in the website folder will become website pages.
 
-If you have a `pages/colors.component` that looks like this:
+If you have a `website/colors.component` that looks like this:
 
 ```
 data.json:
@@ -255,5 +257,5 @@ and a `components/colors.component` that looks like this:
 
 the built page will end up in `build/colors/index.html`.
 
-Things in the `pages` folder have an extra key: `url`. `url`'s value is the relative url that the thing will end up at. In this example, `"/colors"`.
+Components in the `website` folder have an extra key when they're accessed as data: `url`. `url`'s value is the relative url that the page will end up at. In this example, `"/colors"`.
 
