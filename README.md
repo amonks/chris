@@ -78,6 +78,8 @@ and a `components/colors.component` that looks like this:
 
 the built page will end up in `build/colors/index.html`.
 
+Things in the `pages` folder have an extra key: `url`. `url`'s value is the relative url that the thing will end up at. In this example, `"/colors"`.
+
 ## components
 
 Components are html. One key difference: any tag that is a component **or** a *special component* renders that component instead of just the html tag. Also, anything {{double-wrapped}} is evaluated as a javascript expression and inserted.
@@ -111,7 +113,7 @@ Within {{double-brackets}}, several useful objects are global.
 - `attrs` is a map of the attrs passed to the current component
 - `children` is the open component's children as html
 
-any `.thing` in this directory tree becomes a global too. For example, `pages/my-art.thing` will be available as `pages.my-art`, and `site.thing` will be available as `site`.
+Any `.thing` in this directory tree becomes a global too. For example, `pages/my-art.thing` will be available as `pages.my-art`, and `site.thing` will be available as `site`.
 
 ## special components:
 
@@ -150,3 +152,31 @@ You can write your own, but three are built in:
 </switch>
 ```
 
+## example
+
+Let's say you're making a portfolio website. Here's what you might do:
+
+1. make a `components` and a `pages` folder
+2. make a new component `components/art.component` with a template for a portfolio-item
+3. for each art in your portfolio, make a new thing called `pages/[art-title].thing`
+4. make a new thing called `pages/index.component` with something like:
+
+```
+<html>
+  <head>
+    <title>All my arts</title>
+  </head>
+  <body>
+    <h1>These are all my arts:</h1>
+    <ul>
+      <map pages where (component === 'art') as an_art>
+        <li>
+          <a href={{an_art.url}}>
+            {{an_art.title}}
+          </a>
+        </li>
+      </map>
+    </ul>
+  </body>
+</html>
+```
