@@ -1,9 +1,9 @@
 <map page.data.media as medium>
   <switch medium.type>
     image:
-      <image src={{medium.src}} />
+      <media/image src={{medium.src}} />
     vimeo:
-      <vimeo id={{medium.vimeo-id}} />
+      <media/vimeo id={{medium.vimeo-id}} />
   </switch>
 </map>
 
