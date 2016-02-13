@@ -1,7 +1,0 @@
-<website-container>
-  <ul>
-    <map pages where (component === "art") as art>
-      <li>{{art.title}}</li>
-    </map>
-  </ul>
-</website-container>
