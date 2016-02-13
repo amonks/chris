@@ -1,0 +1,9 @@
+<map page.media as medium>
+  <switch medium.type>
+    image:
+      <image src={{medium.src}} />
+    vimeo:
+      <vimeo id={{medium.vimeo-id}} />
+  </switch>
+</map>
+

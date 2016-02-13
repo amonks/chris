@@ -1,0 +1,5 @@
+<website-container>
+  <h1>{{page.title}}</h1>
+  <media />
+  {{text}}
+</website-container>
