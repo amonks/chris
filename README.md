@@ -113,7 +113,9 @@ any `.thing` in this directory tree becomes a global too. For example, `pages/my
 
 ## special components:
 
-Special components look kinda like regular components, but they can do control flow.
+Special components look kinda like regular components, but they can do control flow. 
+
+You can write your own, but three are built in:
 
 ### if
 
