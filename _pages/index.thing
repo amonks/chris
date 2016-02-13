@@ -1,4 +1,16 @@
-<website-container>
-  <image src="https://www.wonderplugin.com/wp-content/plugins/wonderplugin-lightbox/images/demo-image0.jpg" />
-</website-container>
+data:
+{
+  "component": "art",
+  "title": "My Art",
+  "year": "2016",
+  "media": [
+    {
+      "component": "image",
+      "src": "https://www.wonderplugin.com/wp-content/plugins/wonderplugin-lightbox/images/demo-image0.jpg"
+    }
+  ]
+}
+
+text:
+This is a cool art that I made. It is about *the real*.
 

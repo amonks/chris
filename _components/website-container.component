@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>{{data.title}}</title>
+    <title>{{this.data.title || site.data.title}}</title>
   </head>
   <body>
     <nav />

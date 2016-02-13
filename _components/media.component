@@ -1,4 +1,4 @@
-<map page.media as medium>
+<map page.data.media as medium>
   <switch medium.type>
     image:
       <image src={{medium.src}} />
