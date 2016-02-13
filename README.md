@@ -82,7 +82,7 @@ the built page will end up in `build/colors/index.html`.
 
 ## components
 
-Components are html. One key difference: any tag that is a component **or** a *special component* renders that component instead of just the html tag. Also, anything {{double-wrapped}} is evaluated as javascript and should return a value.
+Components are html. One key difference: any tag that is a component **or** a *special component* renders that component instead of just the html tag. Also, anything {{double-wrapped}} is evaluated as a javascript expression and inserted.
 
 So, if you have a component called `components/greeting.component` that looks like this:
 
@@ -103,10 +103,14 @@ html:
   <p>{{attrs.text</p>
 ```
 
+xenakis looks in two places for components: the `components` folder, and `~/.xenakis-components`. run `xenakis gather` to copy every component used by this project from `~/.xenakis-components` into `components`
+
 ### available globals
 
+Within {{double-brackets}}, several useful objects are global.
+
 - `page` is the current page, if it's a .thing rather than a .component
-- `attrs` is a map of the open component's attrs
+- `attrs` is a map of the attrs passed to the current component
 - `children` is the open component's children as html
 
 any `.thing` in this directory tree becomes a global too. For example, `pages/my-art.thing` will be available as `pages.my-art`, and `site.thing` will be available as `site`.
