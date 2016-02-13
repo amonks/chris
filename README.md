@@ -68,6 +68,7 @@ The resultant website will have the following directory structure:
 * `index.html`
 * `my-art/index.html`
 
+This very repository includes a more fleshed-out iteration of this example.
 
 # documentation
 
