@@ -193,6 +193,7 @@ Other components will have a global defined at `facts.the_earth` with this value
 Within {{double-brackets}} in html blocks, and within javascript blocks, several useful objects are global.
 
 - `page` is the root component (in the pages folder). It might be the current component or it might have called the current component.
+- `this` is the current component. It might be the same as `page`, or it might not.
 - `attrs` is a map of the attrs passed to the current component, if the current component was called from html with attrs.
 - `children` is the current component's children as html, if the current component was called from html and has child tags within it.
 
