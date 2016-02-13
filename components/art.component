@@ -1,6 +1,12 @@
-<website-container>
-  <h1>{{page.data.title}}</h1>
-  <media />
-  {{page.text}}
-</website-container>
+css:
+  html {
+    color: red;
+  }
+
+html:
+  <website-container>
+    <h1>{{page.data.title}}</h1>
+    <media />
+    {{page.text}}
+  </website-container>
 
