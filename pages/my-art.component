@@ -1,6 +1,7 @@
+template: art
+
 data.json:
 {
-  "component": "art",
   "title": "My Art",
   "year": "2016",
   "media": [
