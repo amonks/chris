@@ -1,5 +1,34 @@
 // stolen from https://gist.github.com/netgusto/f9866c8abff3672406d4
 
+File = Block* / Content
+
+Block
+  = name:[a-z]+ ":" EOL lines:LINES
+  { 
+  	return {
+      type: "block",
+  	  name: name.join(""),
+  	  lines: lines              
+  	}
+  }
+  
+EOL
+  = "\r\n" / "\n" / "\r"
+  
+INDENT
+  = " "+
+
+LINES
+  = lines:LINE+
+  { return lines }
+
+LINE
+  = INDENT chars:(!EOL .)* EOL
+  { return chars
+             .map((ar) => ar[1])
+             .join("")
+  }
+
 Content = (DocType / Comment / BalancedTag / SelfClosingTag / Text)*
 
 
@@ -16,12 +45,12 @@ Comment = "<!--" c:(!"-->" c:. {return c})* "-->" {
         content: c.join('')
     };
 }
-
+ 
 BalancedTag = startTag:StartTag content:Content endTag:EndTag {
     if (startTag.name != endTag) {
         throw new Error("Expected </" + startTag.name + "> but </" + endTag + "> found.");
     }
-
+ 
     return {
       type: 'BalancedTag',
       name: startTag.name,
@@ -37,14 +66,14 @@ SelfClosingTag = "<" name:TagName attributes:Attributes* "/>" {
       attributes: attributes
     };
   }
-
+ 
 StartTag = "<" name:TagName attributes:Attributes* ">" {
-  return {
+  return { 
     name: name,
     attributes: attributes
   }
 }
-
+ 
 EndTag = "</" name:TagName ">" { return name; }
 
 Attributes = " " attributes:Attribute* { return attributes; }
@@ -73,7 +102,7 @@ JavascriptAttributeValue = value:JavascriptString { return value; }
 QuotedAttributeValue = value:QuotedString { return value; }
 
 UnquotedAttributeValue = value:decimalDigit* { return value.join(''); }
-
+ 
 TagName = chars:[a-zA-Z0-9]+ { return chars.join(""); }
 
 Text = chars:[^<]+  {
@@ -98,5 +127,4 @@ QuotedString = quoteStart:('"'/"'") chars:[a-zA-Z0-9://\.-]+ quoteEnd:('"'/"'") 
   }
   return chars.join("");
 }
-
 
