@@ -1,6 +1,0 @@
-<website-container>
-  <!-- the <website-container> component sets up a basic <html> page, puts a <nav> in it, and then plops us into the <body> tag. -->
-  <h1>Hi! I am an artist!</h1>
-  <media/image src="https://www.wonderplugin.com/wp-content/plugins/wonderplugin-lightbox/images/demo-image0.jpg" />
-</website-container>
-

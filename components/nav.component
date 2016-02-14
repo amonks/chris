@@ -1,9 +1,0 @@
-<ul>
-  <map pages where (component === "art") as art>
-    <li>
-      <a href={{art.url}}>
-        {{art.title}}
-      </a>
-    </li>
-  </map>
-</ul>
