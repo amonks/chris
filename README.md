@@ -14,8 +14,37 @@ Here are my goals:
 I want the power of structure/control flow/templating but I want it to feel like vanilla html. I want it to feel like a language (html), not like a framework. This is to html what scss is to css, *not* what jekyll is to html. 
 
 - You don't need a special generator to create the right file structure: if you take an existing html website and stick it in a folder called "website", that is a totally valid xenakis project.
-
 - The components look like regular html files. You call them with regular html tags and pass data using regular html attrs.
+- There are no config files
+
+### questions
+
+**blocks**
+
+is this .component/block crap really better than just files with the
+same name but different extensions? I like that it makes components
+self-contained, but it'll throw of highlighting in ppls editors and a
+new filetype is kinda inherently complex.
+
+**special components**
+
+I like that they feel like html to use, but I'm thinking about switching
+to syntax for inserting regular javascript control. 
+
+pros/cons:
+
+- it'd feel less like regular html
+- making *new* control would feel more like regular javascript ("special
+components" are probably sweet.js macros)
+- I think my target audience includes both [ppl who aren't comfortable
+with javascript at all] and [ppl who are very comfortable with
+javascript], but I'm not sure how to best to serve that whole spectrum
+
+**building**
+
+Idk how hard it's gonna be to automatically webpack all the individual css and js blocks from components together. The simplest approach would be to leave everything in separate files and call it "http/2 optimized".
+
+I think it makes sense to run all js through babel by default. scss seems pretty safe too. The build process has to be all nice and modular so super-advanced users can add support for their favorite preprocessors. I wonder if I can take a cue from [slush](http://slushjs.github.io/#/) about using vanilla npm for plugins.
 
 # example
 
@@ -90,6 +119,8 @@ This very repository includes a more fleshed-out iteration of this example.
 run `xenakis build` in this folder to build the website. You'll get a new folder, `build`, that you can ftp over to your web host.
 
 run `xenakis gh-pages` in this folder to build the website (you'll get a 'build' folder) and then copy it into a branch called `gh-pages`.
+
+I'll probably add arguments for minification and whatnot.
 
 ### components
 
