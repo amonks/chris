@@ -1,5 +1,9 @@
 xenakis is a static site generator that aims to be as simple as possible, so it's flexible/generic enough for pros but also understandable enough for n00bs.
 
+- If you like learning from examples, there's a pretty well-fleshed-out example project in this very repo. 
+- If you like learning from big-complete resources like API Docs, check out the [Documentation](https://github.com/amonks/xenakis/wiki/Documentation) page.
+- If you like learning from more structured lessony-type stuff, continue down this page.
+
 See the [the wiki](https://github.com/amonks/xenakis/wiki) for more documentation.
 
 * * *
