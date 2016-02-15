@@ -41,6 +41,7 @@ rn this documentation is pretty complete, not very n00b friendly. I'm tryna work
     * map
     * if
     * switch
+* build up a personal library of components for re-use
 
 **Here is a running list of things that an *advanced* user could do to use it custom**:
 
