@@ -1,5 +1,5 @@
 <ul>
-  <map pages where (component === "art") as art>
+  <map collection={{pages}} where={{template === "art"}} as={{art}}>
     <li>
       <a href={{art.url}}>
         {{art.title}}
