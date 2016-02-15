@@ -1,4 +1,4 @@
-<map collection={{page.data.media}} as={{medium}}>
+<map over={{page.data.media}} as={{medium}}>
   <switch on={{medium.type}}>
     <case if={{image}}
       <media/image src={{medium.src}} />
