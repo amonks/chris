@@ -17,6 +17,31 @@ I want the power of structure/control flow/templating but I want it to feel like
 - The components look like regular html files. You call them with regular html tags and pass data using regular html attrs.
 - There are no config files
 
+## thoughts
+
+rn this documentation is pretty complete, not very n00b friendly. I'm tryna work on defining exactly what (how little) information needs to be conveyed b4 i work out how to convey it learnably.
+
+**Here is a running list of things a n00b would need to learn b4 using this**:
+
+* weird `.component` files with blocks in them
+  * which in turn introduces significant whitespace...
+* arcane rules about blocks and their names << simplify this
+* running a command in a terminal in general as an act
+* "woah I can make my own html tags!"
+  * {{syntax}} for switching languages (getting args)
+
+**Here is a running list of things an *intermediate* user could learn to use it better**:
+
+* html-less components // generation
+  * <syntax /> 4 several `special components`
+    * map
+    * if
+    * switch
+
+**Here is a running list of things that an *advanced* user could do to use it custom**:
+
+* throw in a new gulp task to process a different filetype (.less! .es6! .hbs!)
+
 ### questions
 
 **blocks**
