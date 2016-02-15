@@ -25,7 +25,7 @@ rn this documentation is pretty complete, not very n00b friendly. I'm tryna work
 
 * running a command in a terminal in general as an act
 * "woah I can make my own html tags!"
-  * {{syntax}} for switching languages (getting args)
+  * {{syntax}} for switching languages (getting attrs)
 
 **Here is a running list of next steps**:
 
