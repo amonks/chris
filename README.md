@@ -25,11 +25,12 @@ rn this documentation is pretty complete, not very n00b friendly. I'm tryna work
 
 * running a command in a terminal in general as an act
 * "woah I can make my own html tags!"
-  * {{syntax}} for switching languages (getting attrs)
+* {{children}}
 * stuff needs to be in the right place (./components, ./website)
 
 **Here is a running list of next steps**:
 
+* {{syntax}} for accessing data
 * weird `.component` files with blocks in them
   * which in turn introduces significant whitespace...
 * arcane rules about blocks and their names << simplify this
