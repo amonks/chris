@@ -21,14 +21,17 @@ I want the power of structure/control flow/templating but I want it to feel like
 
 rn this documentation is pretty complete, not very n00b friendly. I'm tryna work on defining exactly what (how little) information needs to be conveyed b4 i work out how to convey it learnably.
 
-**Here is a running list of things a n00b would need to learn b4 using this**:
+**Here is a running list of basic things a new user would need to learn before getting any value out of this at all:**
+
+* running a command in a terminal in general as an act
+* "woah I can make my own html tags!"
+  * {{syntax}} for switching languages (getting args)
+
+**Here is a running list of next steps**:
 
 * weird `.component` files with blocks in them
   * which in turn introduces significant whitespace...
 * arcane rules about blocks and their names << simplify this
-* running a command in a terminal in general as an act
-* "woah I can make my own html tags!"
-  * {{syntax}} for switching languages (getting args)
 
 **Here is a running list of things an *intermediate* user could learn to use it better**:
 
