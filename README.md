@@ -110,7 +110,7 @@ A basic `website/index.component` looks like this:
   <body>
     <h1>These are all my arts:</h1>
     <ul>
-      <map collection={{pages}} where={{template === 'art'}} as={{an_art}}>
+      <map over={{pages}} where={{template === 'art'}} as={{an_art}}>
         <li>
           <a href={{an_art.url}}>
             {{an_art.title}}
@@ -221,7 +221,7 @@ You can write your own, but three are built in:
 
 ```
 <ul>
-  <map collection={{collection}} where={{condition}} as={{reference}}>
+  <map over={{collection}} where={{condition}} as={{reference}}>
     <li>{{reference}}</li>
   </map>
 </ul>
