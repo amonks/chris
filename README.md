@@ -110,7 +110,7 @@ A basic `website/index.component` looks like this:
   <body>
     <h1>These are all my arts:</h1>
     <ul>
-      <map pages where (component === 'art') as an_art>
+      <map collection={{pages}} where={{template === 'art'}} as="an_art">
         <li>
           <a href={{an_art.url}}>
             {{an_art.title}}
@@ -210,7 +210,7 @@ You can write your own, but three are built in:
 #### if
 
 ```
-<if condition>
+<if condition={{condition}}>
   <p>This will render if condition is true</p>
 <else>
   <p>This will render if condition is false</p>
@@ -221,7 +221,7 @@ You can write your own, but three are built in:
 
 ```
 <ul>
-  <map collection where (condition) as reference>
+  <map collection={{collection}} where={{condition}} as="reference">
     <li>{{reference}}</li>
   </map>
 </ul>
@@ -230,7 +230,7 @@ You can write your own, but three are built in:
 #### switch
 
 ```
-<switch thing>
+<switch on={{thing}}>
   "one":
     <p>This will render if `thing === "one"`.</p>
   "another":
