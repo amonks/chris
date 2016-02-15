@@ -110,7 +110,7 @@ A basic `website/index.component` looks like this:
   <body>
     <h1>These are all my arts:</h1>
     <ul>
-      <map collection={{pages}} where={{template === 'art'}} as="an_art">
+      <map collection={{pages}} where={{template === 'art'}} as={{an_art}}>
         <li>
           <a href={{an_art.url}}>
             {{an_art.title}}
@@ -221,7 +221,7 @@ You can write your own, but three are built in:
 
 ```
 <ul>
-  <map collection={{collection}} where={{condition}} as="reference">
+  <map collection={{collection}} where={{condition}} as={{reference}}>
     <li>{{reference}}</li>
   </map>
 </ul>
@@ -231,10 +231,12 @@ You can write your own, but three are built in:
 
 ```
 <switch on={{thing}}>
-  "one":
+  <case if="one"
     <p>This will render if `thing === "one"`.</p>
-  "another":
-    <p>This will render if `thing === "another"`.</p>
+  </case>
+  <case if=55> 
+    <p>This will render if `thing === 55`.</p>
+  </case>
 </switch>
 ```
 
