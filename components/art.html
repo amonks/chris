@@ -1,5 +1,7 @@
-<website-container>
+<WebsiteContainer>
   <h1>{{page.data.title}}</h1>
-  <media />
+  <Map over={{page.data.media}} as={{medium}}>
+    <Media/Media media={{medium}} />
+  </Map>
   {{children}}
-</website-container>
+</WebsiteContainer>
