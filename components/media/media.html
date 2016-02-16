@@ -1,0 +1,8 @@
+<Switch on={{attrs.media.type}}>
+  <Case if={{image}}
+    <Image src={{attrs.media.src}} />
+  </Case>
+  <Case if={{vimeo}}>
+    <Vimeo id={{attrs.media.vimeo-id}} />
+  </Case>
+</Switch>
