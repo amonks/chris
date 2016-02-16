@@ -1,7 +1,6 @@
-template: art
-
-data.json:
+---
   {
+    "template": "art",
     "title": "My Art",
     "year": "2016",
     "media": [
@@ -15,7 +14,7 @@ data.json:
       },
     ]
   }
-
+---
 text.md:
   This is a cool art that I made. It is about *the real*.
 
