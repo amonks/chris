@@ -1,11 +1,3 @@
-<map over={{page.data.media}} as={{medium}}>
-  <switch on={{medium.type}}>
-    <case if={{image}}
-      <media/image src={{medium.src}} />
-    </case>
-    <case if={{vimeo}}>
-      <media/vimeo id={{medium.vimeo-id}} />
-    </case>
-  </switch>
-</map>
-
+<Map over={{attrs.media}} as={{medium}}>
+  <Medium medium={{medium}} />
+</Map>
