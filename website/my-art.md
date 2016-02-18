@@ -15,6 +15,6 @@
     ]
   }
 ---
-text.md:
-  This is a cool art that I made. It is about *the real*.
+
+This is a cool art that I made. It is about *the real*.
 
