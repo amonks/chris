@@ -16,7 +16,7 @@ xenakis is a static site generator based on the idea of creating custom html tag
 
 you make a website in a folder called `website`. Except whenever you catch yourself repeating some code on multiple pages (a nav, say), you put that code into a new HTML tag (`<my-nav />`) that you can use like any other.
 
-xenakis uses [riot.js](http://riotjs.com/guide/) under the hood, so most of their documentation applies here.
+xenakis uses [riot.js](http://riotjs.com/guide/) under the hood, so most of their documentation applies here. Much of this page is pasted from their docs.
 
 ### custom tags
 
@@ -199,11 +199,54 @@ After the tag is defined you can use it inside other tags. For example
 
 ## Metadata
 
-Pages can have metadata.
+Pages can have metadata. Here's an example:
+
+`website/sculpture.html`
+```
+---
+type: art
+medium: sculpture
+title: ham on stand
+media: [
+  {
+    type: image,
+    src: images/art-dot-com.jpg
+  }
+]
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>A Fine Sculpture</title>
+  </head>
+  <body>
+    <site-nav />
+      <site-art it={this.page} />
+    <site-footer />
+  </body>
+
+  this.mixin(GLOBAL.data)
+</html>
+```
 
 Within your website, you have access to some data: an array of every file, and the metadata for the current page.
 
+Use the line
+
+```
 this.mixin(GLOBAL.data)
+```
+
+at the end of your html to pull in the website data.
+
+In some html with that line, you can use `this.page` to get the current page's metadata, and `this.site` to get an array of every file in the website.
+
+On this page, for example, `{this.page.medium === 'sculpture'}`.
+
+If you pass attributes to a custom tag, like `<site-art it={this.page}>` here, the attributes are accessible in that tag at `this.opts`. In this case, the [site-art](https://github.com/amonks/xenakis/blob/demo/tags/site-art.tag) tag uses `{{opts.it.title}` to get the value `'ham on stand'`.
+
+* * *
 
 Check out the [wiki](https://github.com/amonks/xenakis/wiki) for more info.
 
