@@ -297,11 +297,34 @@ In some html with that line, you can use `this.page` to get the current page's m
 
 On this page, for example, `{this.page.medium === 'sculpture'}`.
 
-If you pass attributes to a custom tag, like `<site-art it={this.page}>` here, the attributes are accessible in that tag at `this.opts`. In this case, the [site-art](https://github.com/amonks/xenakis/blob/demo/tags/site-art.tag) tag uses `{{opts.it.title}` to get the value `'ham on stand'`.
+If you pass attributes to a custom tag, like `<site-art it={this.page}>` here, the attributes are accessible i;w
+n that tag at `this.opts`. In this case, the [site-art](https://github.com/amonks/xenakis/blob/demo/tags/site-art.tag) tag uses `{{opts.it.title}` to get the value `'ham on stand'`.
 
 ### what is all this metadata good for?
 
 In this demo repo, we have a page called [tags/art-list.tag](https://github.com/amonks/xenakis/blob/demo/tags/art-list.tag) that automatically generates a list of all the arts. (Here, "an art" means an html file in the website folder with `type: art` in its metadata.
+
+Check it out:
+
+```
+<art-list>
+  <h2>List of Arts</h2>
+  <ul>
+    <li each={arts}>
+      <a href={this.path}>
+        { this.title }
+      </a>
+    </li>
+  </ul>
+
+  this.mixin(GLOBAL.data)
+  this.arts = this.site.filter( function (page) { return page.type === 'art' } )
+</art-list>
+```
+
+when we define `this.arts` in the javascript portion, it becomes available as {arts} in the html portion.
+
+First, we get th elist of every file on the website: `this.site`, and then we [filter it](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) to only include pages where `page.type === 'art'` to get a list of arts.
 
 * * *
 
