@@ -39,8 +39,6 @@ Those custom tags go in a folder called `tags`. Here's an example, which you can
 
 here are some rules:
 
-
-
 ## Tag syntax
 
 You can use custom tags from html files in the website folder, or from other custom tags.
@@ -326,7 +324,14 @@ when we define `this.arts` in the javascript portion, it becomes available as {a
 
 First, we get th elist of every file on the website: `this.site`, and then we [filter it](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) to only include pages where `page.type === 'art'` to get a list of arts.
 
+## hosting
+
+When you're ready to think about hosting, you can build your website with `xenakis/build` and then upload the contents of the `build` folder right to a static file host of your choice. No PHP, no nothin.
+
+I recommend [Github Pages](https://pages.github.com/) 'cuz it's free and easy.
+
 * * *
 
 Check out the [wiki](https://github.com/amonks/xenakis/wiki) for more info.
+
 
