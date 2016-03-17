@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+
+./xenakis/node_modules/.bin/gulp --gulpfile ./xenakis/Gulpfile.js --base .
+
