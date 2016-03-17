@@ -2,7 +2,9 @@
 
 Here's an example Xenakis project.
 
-To get started, download [this .zip file](http://f.monks.co/xenakis.zip), extract it into this folder, pull this folder up in a terminal, and run `xenakis/serve`.
+## QUICK START
+
+To get started, download [this .zip file](http://f.monks.co/xenakis.zip), extract it into this folder, pull this folder up in a terminal, and run `xenakis/serve`. Then, go to [http://localhost:3000](http://localhost:3000) to see a cool website.
 
 * `build/` contains the built website, ready to go. it's updated when you run `xenakis/serve` or `xenakis/build`.
 * `website/` is where files that should go into the built website go.
@@ -35,14 +37,65 @@ Those custom tags go in a folder called `tags`. Here's an example, which you can
 </site-nav>
 ```
 
-here are some rules
+here are some rules:
 
-- every tag file must begin with a non-indented opening tag
-- that tag's name becomes the tag file's name
-- every tag file's name must include a hyphen
-- every custom tag must be closed with a slash (<tag /> or <tag></tag>)
+
+
+## Tag syntax
 
 You can use custom tags from html files in the website folder, or from other custom tags.
+
+A custom tag is a combination of layout (HTML) and logic (JavaScript). Here are the basic rules:
+
+* HTML is defined first and the logic is enclosed inside an optional `<script>` tag.
+* Without the `<script>` tag the JavaScript starts where the last HTML tag ends.
+* Custom tags can be empty, HTML only or JavaScript only
+* Quotes are optional: `<foo bar={ baz }>` becomes `<foo bar="{ baz }">`.
+* Smart ES6 like method syntax is supported: `methodName() { }` becomes `this.methodName = function() {}.bind(this)` where `this` always points to the current tag instance.
+* A shorthand syntax for class names is available: `class={ completed: done }` renders to `class="completed"`when the value of `done` is a true value.
+* Boolean attributes (checked, selected etc..) are ignored when the expression value is falsy: `<input checked={ undefined }>` becomes `<input>`.
+* All attribute names *must be lowercase*. This is due to browser specification.
+* Self-closing tags are supported: `<div/>` equals `<div></div>`. Well known "open tags" such as `<br>`, `<hr>`, `<img>` or `<input>` are never closed after the compilation.
+* Custom tags always need to be closed (normally or self-closed).
+* Standard HTML tags (`label`, `table`, `a` etc..) can also be customized, but not necessarily a wise thing to do.
+
+
+Tag definition in tag files always starts on the beginning of the line:
+
+```html
+<!-- works -->
+<my-tag>
+
+</my-tag>
+
+<!-- also works -->
+<my-tag></my-tag>
+
+  <!-- this fails, because of indentation -->
+  <my-tag>
+
+  </my-tag>
+```
+
+Inline tag definitions(in document body) must be properly indented, with all custom tags equally indented at the lowest indent level, mixing of tabs and spaces is discouraged.
+
+### No script tag
+
+You can leave out the `<script>` tag:
+
+```html
+<todo>
+
+  <!-- layout -->
+  <h3>{ opts.title }</h3>
+
+  // logic comes here
+  this.items = [1, 2, 3]
+
+</todo>
+```
+
+In which case the logic starts after the last HTML tag. This "open syntax" is more commonly used on the examples on this website.
 
 ## logic
 
@@ -245,6 +298,10 @@ In some html with that line, you can use `this.page` to get the current page's m
 On this page, for example, `{this.page.medium === 'sculpture'}`.
 
 If you pass attributes to a custom tag, like `<site-art it={this.page}>` here, the attributes are accessible in that tag at `this.opts`. In this case, the [site-art](https://github.com/amonks/xenakis/blob/demo/tags/site-art.tag) tag uses `{{opts.it.title}` to get the value `'ham on stand'`.
+
+### what is all this metadata good for?
+
+In this demo repo, we have a page called [tags/art-list.tag](https://github.com/amonks/xenakis/blob/demo/tags/art-list.tag) that automatically generates a list of all the arts. (Here, "an art" means an html file in the website folder with `type: art` in its metadata.
 
 * * *
 
